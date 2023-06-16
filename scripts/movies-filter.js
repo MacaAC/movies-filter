@@ -371,20 +371,37 @@ const MOVIES = [
 
 const userIdInput = $("#user-id")
 const rateInput = $("#rate")
+const fromDateInput = $("#from-date")
+const toDateInput = $("#to-date")
 
+const filterMoviesByDate = (fromDate, toDate, movies) =>{
 
+  const filteredMoviesByDate = movies.filter(movie=>{
+    const movieDate = new Date(movie.watched)
+    if(movieDate >= fromDate && movieDate <= toDate){
+      return true
+    } else{
+      return false
+    }
+  })
+
+  return filteredMoviesByDate
+
+}
 
 
 const filterMovies = (movies) =>{
+const fromDate = fromDateInput.value
+const toDate = toDateInput.value
+filterMoviesByDate(fromDate, toDate, movies)
 
+// let filterMoviesByRate = movies.filter(movie=> movie.rate === parseFloat(rateInput.value))
+// console.log(filterMoviesByRate)
 
-let filterMoviesByRate = movies.filter(movie=> movie.rate === parseFloat(rateInput.value))
-console.log(filterMoviesByRate)
-
-if(userIdInput.value){
-    let filteredMoviesByUserId = movies.filter(movie=> movie.userId === parseInt(userIdInput.value))
-    console.log(filteredMoviesByUserId)
-}
+// if(userIdInput.value){
+//     let filteredMoviesByUserId = movies.filter(movie=> movie.userId === parseInt(userIdInput.value))
+//     console.log(filteredMoviesByUserId)
+// }
 
 }
 // userIdInput.addEventListener("change",()=>filterMovies(MOVIES))
