@@ -11,7 +11,7 @@ const MOVIES = [
     "title": "The Godfather",
     "genre": "Thriller",
     "watched": "2022-04-01 09:40:48",
-    "rate": 7.6,
+    "rate": 7,
     "image": "https://i.ebayimg.com/images/g/X~cAAOSwz2ZiaB2w/s-l1600.jpg"
   },
   {
@@ -20,7 +20,7 @@ const MOVIES = [
     "title": "The Texas Chain Saw Massacre",
     "genre": "Horror",
     "watched": "2020-05-25 13:11:24",
-    "rate": 7.4,
+    "rate": 7,
     "image": "https://m.media-amazon.com/images/I/91ei8JE0SDL.jpg"
   },
   {
@@ -373,35 +373,38 @@ const userIdInput = $("#user-id")
 const rateInput = $("#rate")
 const fromDateInput = $("#from-date")
 const toDateInput = $("#to-date")
+const form = $("#consult-form")
+//fromDateInput.addEventListener("change",()=>console.log(new Date(fromDateInput.value))) 
 
 const filterMoviesByDate = (fromDate, toDate, movies) =>{
-
-  const filteredMoviesByDate = movies.filter(movie=>{
-    const movieDate = new Date(movie.watched)
-    if(movieDate >= fromDate && movieDate <= toDate){
-      return true
-    } else{
-      return false
-    }
-  })
-
-  return filteredMoviesByDate
-
+    return movies.filter(movie=>{
+        const movieDate = new Date(movie.watched)
+          if(movieDate >= fromDate && movieDate <= toDate){
+            return true
+          } else{
+            return false
+          }
+        })
 }
 
 
 const filterMovies = (movies) =>{
-const fromDate = fromDateInput.value
-const toDate = toDateInput.value
-filterMoviesByDate(fromDate, toDate, movies)
+  const fromDate = new Date(fromDateInput.value)
+  const toDate = new Date(toDateInput.value)
 
-// let filterMoviesByRate = movies.filter(movie=> movie.rate === parseFloat(rateInput.value))
-// console.log(filterMoviesByRate)
+  const filteredMoviesByDate = filterMoviesByDate(fromDate, toDate, movies)
 
-// if(userIdInput.value){
-//     let filteredMoviesByUserId = movies.filter(movie=> movie.userId === parseInt(userIdInput.value))
-//     console.log(filteredMoviesByUserId)
-// }
+  const filteredMoviesByDateAndRate = filteredMoviesByDate.filter(movie=> movie.rate === parseFloat(rateInput.value))
+  //console.log(filteredMoviesByDateAndRate)
+
+if(userIdInput.value){
+    const filteredMoviesByDateRateAndUserId = filteredMoviesByDateAndRate.filter(movie=> movie.userId === parseInt(userIdInput.value))
+    return filteredMoviesByDateRateAndUserId
+}
+return filteredMoviesByDateAndRate
 
 }
-// userIdInput.addEventListener("change",()=>filterMovies(MOVIES))
+form.addEventListener("submit",(event)=>{
+  event.preventDefault()
+  console.log(filterMovies(MOVIES))
+})
