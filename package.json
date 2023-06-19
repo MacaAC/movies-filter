@@ -1,0 +1,22 @@
+{
+  "name": "movies-filter",
+  "version": "1.0.0",
+  "description": "sass",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MacaAC/movies-filter.git"
+  },
+  "author": "María Macarena Álvarez Castillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MacaAC/movies-filter/issues"
+  },
+  "homepage": "https://github.com/MacaAC/movies-filter#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
