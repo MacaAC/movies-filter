@@ -11,7 +11,7 @@ const MOVIES = [
     "title": "The Godfather",
     "genre": "Thriller",
     "watched": "2022-04-01 09:40:48",
-    "rate": 7,
+    "rate": 7.6,
     "image": "https://i.ebayimg.com/images/g/X~cAAOSwz2ZiaB2w/s-l1600.jpg"
   },
   {
@@ -20,7 +20,7 @@ const MOVIES = [
     "title": "The Texas Chain Saw Massacre",
     "genre": "Horror",
     "watched": "2020-05-25 13:11:24",
-    "rate": 7,
+    "rate": 7.6,
     "image": "https://m.media-amazon.com/images/I/91ei8JE0SDL.jpg"
   },
   {
@@ -388,23 +388,23 @@ const filterMoviesByDate = (fromDate, toDate, movies) =>{
 
 
 const filterMovies = (movies) =>{
-  
+
   const fromDate = new Date(fromDateInput.value)
   const toDate = new Date(toDateInput.value)
 
   let filteredMovies = filterMoviesByDate(fromDate, toDate, movies)
 
-  filteredMovies = filteredMovies.filter(movie=> movie.rate === parseFloat(rateInput.value))
+  filteredMovies = filteredMovies.filter(movie=> movie.rate === Number(rateInput.value))
 
   if(userIdInput.value){
-    filteredMovies = filteredMovies.filter(movie=> movie.userId === parseInt(userIdInput.value))
+    filteredMovies = filteredMovies.filter(movie=> movie.userId === Number(userIdInput.value))
   }
   return filteredMovies
 
 }
 const getMoviesWithUsersDetails = (filteredMovies) => {
-    return filteredMovies.map(movie => {
-      const user = USERS.find(user => user.id === movie.userId)
+  return filteredMovies.map(movie => {
+    const user = USERS.find(user => user.id === movie.userId)
       return{
         id: user.id,
         username:user.username,
@@ -419,7 +419,14 @@ const getMoviesWithUsersDetails = (filteredMovies) => {
 
 form.addEventListener("submit",(event)=>{
   event.preventDefault()
-  console.log(filterMovies(MOVIES))
-  console.log("USERS",getMoviesWithUsersDetails(filterMovies(MOVIES)))
+  const rateValue = rateInput.value
+  const fromDateValue = fromDateInput.value
+  const toDateValue = toDateInput.value
+  if (!rateValue || !toDateValue || !fromDateValue){
+    alert("Por favor rellene todos los campos requeridos")
+    return
+  }
+  const filteredMovies = filterMovies(MOVIES)
+  console.log("USERS",getMoviesWithUsersDetails(filteredMovies))
 })
 
