@@ -374,6 +374,11 @@ const rateInput = $("#rate")
 const fromDateInput = $("#from-date")
 const toDateInput = $("#to-date")
 const form = $("#consult-form")
+const welcomeSection = $("#banana")
+const cardsContainer = $("#cards-container")
+
+const clean = (idHtml) => idHtml.classList.add("hidden");
+const show = (idHtml) => idHtml.classList.remove("hidden");
 
 const filterMoviesByDate = (fromDate, toDate, movies) =>{
     return movies.filter(movie=>{
@@ -416,9 +421,61 @@ const getMoviesWithUsersDetails = (filteredMovies) => {
       }
     })
 }
+const showCards = () =>{
+  //show(cardsContainer)
+  const filteredMovies = filterMovies(MOVIES)
+  for(const movie of getMoviesWithUsersDetails(filteredMovies)){
+    const movieCard = document.createElement("div");
+    movieCard.classList.add("movie-card");
+    cardsContainer.appendChild(movieCard);
+
+    const cardMovieTitle = document.createElement("h2")
+    cardMovieTitle.classList.add("movie-card-title");
+    cardMovieTitle.textContent = movie.movie; 
+    movieCard.appendChild(cardMovieTitle);
+
+    const cardMovieUser = document.createElement("p")
+    cardMovieUser.classList.add("cardsInfo")
+    cardMovieUser.textContent = `User: ${movie.username}`
+    movieCard.appendChild(cardMovieUser);
+
+    const cardMovieUserId = document.createElement("p")
+    cardMovieUserId.classList.add("cardsInfo")
+    cardMovieUserId.textContent = `User id: ${movie.id}`
+    movieCard.appendChild(cardMovieUserId);
+
+    const email = document.createElement("p")
+    email.classList.add("cardsInfo")
+    email.textContent = `User's email: ${movie.email
+    }`
+    movieCard.appendChild(email);
+
+    const cardFullAdress = document.createElement("p")
+    cardFullAdress.classList.add("cardsInfo")
+    cardFullAdress.textContent = `User's adress:  ${movie.fullAdress
+    }`
+    movieCard.appendChild(cardFullAdress);
+
+    const cardMovieRate = document.createElement("p")
+    cardMovieRate.classList.add("cardsInfo")
+    cardMovieRate.textContent = `Movie's rate: ${movie.rate
+    }`
+    movieCard.appendChild(cardMovieRate);
+
+    const movieCompany = document.createElement("p")
+    movieCompany.classList.add("cardsInfo")
+    movieCompany.textContent = `Movie's company: ${movie.company
+    }`
+    movieCard.appendChild(movieCompany);
+
+
+  }
+}
+
 
 form.addEventListener("submit",(event)=>{
   event.preventDefault()
+  
   const rateValue = rateInput.value
   const fromDateValue = fromDateInput.value
   const toDateValue = toDateInput.value
@@ -427,6 +484,15 @@ form.addEventListener("submit",(event)=>{
     return
   }
   const filteredMovies = filterMovies(MOVIES)
+  
+  clean(form)
+  clean(welcomeSection)//no funciona, no sé porqué
+
   console.log("USERS",getMoviesWithUsersDetails(filteredMovies))
+  const moviesWithUsersDetails = getMoviesWithUsersDetails(filteredMovies);
+  console.log("USERS", moviesWithUsersDetails);
+  showCards()
+
+
 })
 

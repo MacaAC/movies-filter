@@ -10,6 +10,10 @@ body{
     font-size: 1.6rem;
     line-height: 2;
 }
+/* Utilities */
+.hidden{
+    display: none;
+}
 header{
     /* background-color: #F9A826; */
     display: flex;
@@ -82,5 +86,24 @@ button:hover {
     display: block;
 }
 .welcome-section-title{
+    text-align: center;
+}
+/* cards */
+.container{
+  background-color:#F9A826 ;
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+}
+.movie-card{
+    width: 70%;
+    border: 2px solid black;
+    border-radius: 1rem;
+    padding: 3rem;
+    background-color:#ccc;
+    
+}
+.movie-card-title{
+    color: #F9A826;
     text-align: center;
 }

@@ -20,7 +20,7 @@
             <a>Contact us</a>
         </nav>
     </header>
-    <section class="welcome-section">
+    <section id="banana" class="welcome-section">
         <div class="welcome-section-hero">
             <img src="src/assets/undraw_movie_night_re_9umk.svg" alt="hero">
         </div>
@@ -28,18 +28,21 @@
             Welcome to your Movies-filter site
         </h1>
     </section>
-
-    <form id="consult-form">
-        <label for="user-id">Ingresa tu Id:</label>
-        <input id="user-id" type="number">
-        <label for="from-date">Ingresa desde cuando:</label>
-        <input  id="from-date" type="date">
-        <label for="to-date">Ingresa hasta cuando:</label>
-        <input  id="to-date" type="date">
-        <label for="rate">Ingresa la calificación de la peli:</label>
-        <input id="rate" type="text">
-        <button type="submit">Consult</button>
-    </form>
+    <section>
+        <form id="consult-form">
+            <label for="user-id">Ingresa tu Id:</label>
+            <input id="user-id" type="number">
+            <label for="from-date">Ingresa desde cuando:</label>
+            <input  id="from-date" type="date">
+            <label for="to-date">Ingresa hasta cuando:</label>
+            <input  id="to-date" type="date">
+            <label for="rate">Ingresa la calificación de la peli:</label>
+            <input id="rate" type="text">
+            <button type="submit">Consult</button>
+        </form>
+    </section>
+    <section id="cards-container" class="container">
+    </section>
     <script src="scripts/movies-filter.js"></script>
 </body>
 </html>
