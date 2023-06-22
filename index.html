@@ -17,19 +17,23 @@
             <img src="src/assets/logo1.png">
         </div>
         <nav>
-            <a>Home</a>
-            <a>Contact us</a>
+            <button id="home">Home</button>
+            <a href="https://www.linkedin.com/in/maria-macarena-%C3%A1lvarez-castillo-56445a176/">Contact us</a>
         </nav>
     </header>
-    <section id="banana" class="welcome-section">
-        <div class="welcome-section-hero">
-            <img src="src/assets/undraw_movie_night_re_9umk.svg" alt="hero">
-        </div>
-        <h1 class="welcome-section-title">
-            Welcome to your Movies-filter site
-        </h1>
-    </section>
     <section>
+        <div id="cover" class="welcome-section">
+            <div class="welcome-section-hero">
+                <img src="src/assets/undraw_movie_night_re_9umk.svg" alt="hero">
+            </div>
+            <h1 class="welcome-section-title">
+                Welcome to your Movies-filter site
+            </h1>
+            <button id="show-form-button">Let's filter</button>
+        </div>
+    </section>
+    <section class="form-section hidden" id="form-container">
+        <h1>Please enter your data</h1>
         <form id="consult-form">
             <label for="user-id">Ingresa tu Id:</label>
             <input id="user-id" type="number">
@@ -42,14 +46,16 @@
             <button type="submit">Consult</button>
         </form>
     </section>
-    <section id="cards-container" class="container">
+    <section id="filtered-movies-cards-container" class="filtered-movies-cards-section hidden">
+        <button id="filter-again-button">Filter again</button>
+        <div id="cards-container" class="container">
+        </div>
     </section>
     <footer>
         <div class="footer-button-box">
-            <button><i class="fab fa-twitter"></i></button>
-            <button><i class="fab fa-github-alt"></i></button>
-            <button><i class="fab fa-linkedin"></i></button>
-            <button><i class="fab fa-twitter"></i></button>
+            <button id="github-button"><i class="fab fa-github-alt"></i></button>
+            <button id="linkedin-button"><i class="fab fa-linkedin"></i></button>
+            <button id="home-button"><i class="fas fa-home"></i></i></button>
         </div>
         <div class="sign">
             <p>Made with ❤️ by Maca </p></div>

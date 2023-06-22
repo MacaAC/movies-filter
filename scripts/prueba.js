@@ -1,7 +1,9 @@
-
-
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
+
+
+const clean = (idHtml) => idHtml.classList.add("hidden");
+const show = (idHtml) => idHtml.classList.remove("hidden");
 
 
 //MOVIES ARRAY
@@ -368,8 +370,6 @@ const USERS = [
 ]
 
 
-//filterMovies({ users, movies, userId, fromDate, toDate, rate });
-
 const userIdInput = $("#user-id")
 const rateInput = $("#rate")
 const fromDateInput = $("#from-date")
@@ -385,150 +385,153 @@ const homeButton = $("#home-button")
 const home =$("#home")
 const githubButton = $("#github-button")
 const linkedinButton = $("#linkedin-button")
-console.log("hola", welcomeSection)
 
-const clean = (idHtml) => idHtml.classList.add("hidden");
-const show = (idHtml) => idHtml.classList.remove("hidden");
+// const fromDateInputValue = new Date(fromDateInput.value)
+// const toDateInputValue = new Date(toDateInput.value)
+
+
 
 const filterMoviesByDate = (fromDate, toDate, movies) =>{
     return movies.filter(movie=>{
         const movieDate = new Date(movie.watched)
-          if(movieDate >= fromDate && movieDate <= toDate){
+        if(movieDate >= fromDate && movieDate <= toDate){
             return true
-          } else{
+        } else{
             return false
-          }
+        }
         })
 }
 
 
-const filterMovies = (movies) =>{
+const filterMovies = ({movies,users, userId, rate, fromDate, toDate}) =>{
+    console.log(movies)
+    const moviesToFilter = [...movies]
+    console.log(moviesToFilter)
+    let filteredMovies = filterMoviesByDate(fromDate,toDate,moviesToFilter)
 
-  const fromDate = new Date(fromDateInput.value)
-  const toDate = new Date(toDateInput.value)
+    filteredMovies = filteredMovies.filter(movie=> movie.rate === Number(rate))
 
-  let filteredMovies = filterMoviesByDate(fromDate, toDate, movies)
-
-  filteredMovies = filteredMovies.filter(movie=> movie.rate === Number(rateInput.value))
-
-  if(userIdInput.value){
-    filteredMovies = filteredMovies.filter(movie=> movie.userId === Number(userIdInput.value))
-  }
-  return filteredMovies
-
+    if(userId){
+        filteredMovies = filteredMovies.filter(movie=> movie.userId === Number(userId))
+    }
+    filteredMovies = filteredMovies.map(movie => {
+        const user = users.find(user => user.id === movie.userId)
+        return{
+            id: user.id,
+            username:user.username,
+            email: user.email,
+            fullAdress: `${user.address.street} - ${user.address.city}`,
+            company: user.company.name,
+            movie: movie.title,
+            rate: movie.rate
+        }
+        })
+    return filteredMovies
 }
 
-const getMoviesWithUsersDetails = (filteredMovies) => {
-  return filteredMovies.map(movie => {
-    const user = USERS.find(user => user.id === movie.userId)
-      return{
-        id: user.id,
-        username:user.username,
-        email: user.email,
-        fullAdress: `${user.address.street} - ${user.address.city}`,
-        company: user.company.name,
-        movie: movie.title,
-        rate: movie.rate
-      }
-    })
-}
-const showCards = () =>{
-  show(filteredMoviesCardsContainer)
 
 
-  const filteredMovies = filterMovies(MOVIES)
-  for(const movie of getMoviesWithUsersDetails(filteredMovies)){
-    const movieCard = document.createElement("div");
-    movieCard.classList.add("movie-card");
-    cardsContainer.appendChild(movieCard);
-
-    const cardMovieTitle = document.createElement("h2")
-    cardMovieTitle.classList.add("movie-card-title");
-    cardMovieTitle.textContent = movie.movie; 
-    movieCard.appendChild(cardMovieTitle);
-
-    const cardMovieUser = document.createElement("p")
-    cardMovieUser.classList.add("cardsInfo")
-    cardMovieUser.textContent = `User: ${movie.username}`
-    movieCard.appendChild(cardMovieUser);
-
-    const cardMovieUserId = document.createElement("p")
-    cardMovieUserId.classList.add("cardsInfo")
-    cardMovieUserId.textContent = `User id: ${movie.id}`
-    movieCard.appendChild(cardMovieUserId);
-
-    const email = document.createElement("p")
-    email.classList.add("cardsInfo")
-    email.textContent = `User's email: ${movie.email
-    }`
-    movieCard.appendChild(email);
-
-    const cardFullAdress = document.createElement("p")
-    cardFullAdress.classList.add("cardsInfo")
-    cardFullAdress.textContent = `User's adress:  ${movie.fullAdress
-    }`
-    movieCard.appendChild(cardFullAdress);
-
-    const cardMovieRate = document.createElement("p")
-    cardMovieRate.classList.add("cardsInfo")
-    cardMovieRate.textContent = `Movie's rate: ${movie.rate
-    }`
-    movieCard.appendChild(cardMovieRate);
-
-    const movieCompany = document.createElement("p")
-    movieCompany.classList.add("cardsInfo")
-    movieCompany.textContent = `Movie's company: ${movie.company
-    }`
-    movieCard.appendChild(movieCompany);
 
 
-  }
+const showCards = (filteredMovies) =>{
+    show(filteredMoviesCardsContainer)
+
+    for(const movie of filteredMovies){
+        const movieCard = document.createElement("div");
+        movieCard.classList.add("movie-card");
+        cardsContainer.appendChild(movieCard);
+
+        const cardMovieTitle = document.createElement("h2")
+        cardMovieTitle.classList.add("movie-card-title");
+        cardMovieTitle.textContent = movie.movie; 
+        movieCard.appendChild(cardMovieTitle);
+
+        const cardMovieUser = document.createElement("p")
+        cardMovieUser.classList.add("cardsInfo")
+        cardMovieUser.textContent = `User: ${movie.username}`
+        movieCard.appendChild(cardMovieUser);
+
+        const cardMovieUserId = document.createElement("p")
+        cardMovieUserId.classList.add("cardsInfo")
+        cardMovieUserId.textContent = `User id: ${movie.id}`
+        movieCard.appendChild(cardMovieUserId);
+
+        const email = document.createElement("p")
+        email.classList.add("cardsInfo")
+        email.textContent = `User's email: ${movie.email
+        }`
+        movieCard.appendChild(email);
+
+        const cardFullAdress = document.createElement("p")
+        cardFullAdress.classList.add("cardsInfo")
+        cardFullAdress.textContent = `User's adress:  ${movie.fullAdress
+        }`
+        movieCard.appendChild(cardFullAdress);
+
+        const cardMovieRate = document.createElement("p")
+        cardMovieRate.classList.add("cardsInfo")
+        cardMovieRate.textContent = `Movie's rate: ${movie.rate
+        }`
+        movieCard.appendChild(cardMovieRate);
+
+        const movieCompany = document.createElement("p")
+        movieCompany.classList.add("cardsInfo")
+        movieCompany.textContent = `Movie's company: ${movie.company
+        }`
+        movieCard.appendChild(movieCompany);
+
+    }
 }
 
 
 form.addEventListener("submit",(event)=>{
-  event.preventDefault()
-  
-  const rateValue = rateInput.value
-  const fromDateValue = fromDateInput.value
-  const toDateValue = toDateInput.value
-  if (!rateValue || !toDateValue || !fromDateValue){
+    event.preventDefault()
+
+    const rateValue = rateInput.value
+    const fromDateValue = fromDateInput.value
+    const toDateValue = toDateInput.value
+    if (!rateValue || !toDateValue || !fromDateValue){
     alert("Por favor rellene todos los campos requeridos")
     return
-  }
-  const filteredMovies = filterMovies(MOVIES)
-  
-  clean(formContainer)
+    }
 
-  console.log("USERS",getMoviesWithUsersDetails(filteredMovies))
-  const moviesWithUsersDetails = getMoviesWithUsersDetails(filteredMovies);
-  console.log("USERS", moviesWithUsersDetails);
-  showCards()
-})
+    clean(formContainer)
+    const filteredMovies = filterMovies({
+        movies: MOVIES,
+        users: USERS,
+        userId: $("#user-id").value,
+        fromDate: new Date($("#from-date").value),
+        toDate: new Date($("#to-date").value),
+        rate: $("#rate").value
+      })
+      showCards(filteredMovies)
 
-showFormButton.addEventListener("click",()=>{
-  clean(welcomeSection)
-  show(formContainer)
-})
+   
+    })
 
-filterAgainButton.addEventListener("click", ()=>{
-  clean(filteredMoviesCardsContainer)
-  show(formContainer)
-})
+    showFormButton.addEventListener("click",()=>{
+    clean(welcomeSection)
+    show(formContainer)
+    })
 
-homeButton.addEventListener("click", ()=>{
-  clean(formContainer)
-  clean(filteredMoviesCardsContainer)
-  show(welcomeSection)
-})
-home.addEventListener("click", ()=>{
-  clean(formContainer)
-  clean(filteredMoviesCardsContainer)
-  show(welcomeSection)
-})
-githubButton.addEventListener("click", () => {
-  window.location.href = "https://github.com/MacaAC";
-});
-linkedinButton.addEventListener("click", () => {
-  window.location.href = "https://www.linkedin.com/in/maria-macarena-%C3%A1lvarez-castillo-56445a176/";
-});
+    filterAgainButton.addEventListener("click", ()=>{
+    clean(filteredMoviesCardsContainer)
+    show(formContainer)
+    })
+
+    homeButton.addEventListener("click", ()=>{
+    clean(formContainer)
+    clean(filteredMoviesCardsContainer)
+    show(welcomeSection)
+    })
+    home.addEventListener("click", ()=>{
+    clean(formContainer)
+    clean(filteredMoviesCardsContainer)
+    show(welcomeSection)
+    })
+    githubButton.addEventListener("click", () => {
+    window.location.href = "https://github.com/MacaAC";
+    });
+    linkedinButton.addEventListener("click", () => {
+    window.location.href = "https://www.linkedin.com/in/maria-macarena-%C3%A1lvarez-castillo-56445a176/";
+    });

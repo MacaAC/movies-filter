@@ -10,10 +10,7 @@ body{
     font-size: 1.6rem;
     line-height: 2;
 }
-/* Utilities */
-.hidden{
-    display: none;
-}
+
 header{
     /* background-color: #F9A826; */
     display: flex;
@@ -31,13 +28,24 @@ header{
 }
 nav{
     /* border: 2px solid black; */
-    width: 40%;
+    width: 50%;
     display: flex;
     justify-content: space-around;
 
 }
 nav a{
     color:#F9A826;
+    text-decoration: none;
+}
+#home{
+    background-color: transparent;
+    color: #F9A826;
+}
+.form-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 0 4rem 0;
 }
 form {
     display: flex;
@@ -71,14 +79,14 @@ button:hover {
     background-color: #F9A826;
 }
 .welcome-section {
-    margin-top: 2rem;
+    padding: 4rem ;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .welcome-section-hero{
-    width: 80%;
+    width: 90%;
 }
 .welcome-section-hero img{
     width: 100%;
@@ -89,24 +97,32 @@ button:hover {
     text-align: center;
 }
 /* cards */
+.filtered-movies-cards-section{
+    padding: 4rem;
+}
+.filtered-movies-cards-section button{
+    margin-bottom: 2rem;
+    background-color: #F9A826;
+    padding: 1rem;
+}
 .container{
-  background-color:#F9A826 ;
   display: flex;
-  justify-content: center;
-  padding: 4rem;
+  flex-direction: column;
+  align-items:center ;
 }
 .movie-card{
-    width: 70%;
-    border: 2px solid black;
+    width: 90%;
     border-radius: 1rem;
     padding: 3rem;
     background-color:#ccc;
+    margin: 1rem 0 1rem 0;
     
 }
 .movie-card-title{
     color: #F9A826;
     text-align: center;
 }
+
 /* footer */
 
 footer{
@@ -114,22 +130,27 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 4rem;
 }
 
 .footer-button-box button{
+    border: 2px solid black;
     border-radius: 50%;
     background-color: white;
-    height: 60px;
-    width: 60px;
-    margin: 10px;
     border:1px solid white;
 }
+
 .footer-button-box button i{
     color:#F9A826
 }
+
 .footer-button-box button:hover{
     background-color: #F9A826;
 }
 .footer-button-box button i:hover{
     color:white;
+}
+/* Utilities */
+.hidden{
+    display: none;
 }
