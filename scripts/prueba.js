@@ -386,8 +386,6 @@ const home =$("#home")
 const githubButton = $("#github-button")
 const linkedinButton = $("#linkedin-button")
 
-// const fromDateInputValue = new Date(fromDateInput.value)
-// const toDateInputValue = new Date(toDateInput.value)
 
 
 
@@ -404,9 +402,7 @@ const filterMoviesByDate = (fromDate, toDate, movies) =>{
 
 
 const filterMovies = ({movies,users, userId, rate, fromDate, toDate}) =>{
-    console.log(movies)
     const moviesToFilter = [...movies]
-    console.log(moviesToFilter)
     let filteredMovies = filterMoviesByDate(fromDate,toDate,moviesToFilter)
 
     filteredMovies = filteredMovies.filter(movie=> movie.rate === Number(rate))
@@ -431,10 +427,59 @@ const filterMovies = ({movies,users, userId, rate, fromDate, toDate}) =>{
 
 
 
+// const showCards = (filteredMovies) =>{
+//     show(filteredMoviesCardsContainer)
+
+//     for(const movie of filteredMovies){
+//         const movieCard = document.createElement("div");
+//         movieCard.classList.add("movie-card");
+//         cardsContainer.appendChild(movieCard);
+
+//         const cardMovieTitle = document.createElement("h2")
+//         cardMovieTitle.classList.add("movie-card-title");
+//         cardMovieTitle.textContent = movie.movie; 
+//         movieCard.appendChild(cardMovieTitle);
+
+//         const cardMovieUser = document.createElement("p")
+//         cardMovieUser.classList.add("cardsInfo")
+//         cardMovieUser.textContent = `User: ${movie.username}`
+//         movieCard.appendChild(cardMovieUser);
+
+//         const cardMovieUserId = document.createElement("p")
+//         cardMovieUserId.classList.add("cardsInfo")
+//         cardMovieUserId.textContent = `User id: ${movie.id}`
+//         movieCard.appendChild(cardMovieUserId);
+
+//         const email = document.createElement("p")
+//         email.classList.add("cardsInfo")
+//         email.textContent = `User's email: ${movie.email
+//         }`
+//         movieCard.appendChild(email);
+
+//         const cardFullAdress = document.createElement("p")
+//         cardFullAdress.classList.add("cardsInfo")
+//         cardFullAdress.textContent = `User's adress:  ${movie.fullAdress
+//         }`
+//         movieCard.appendChild(cardFullAdress);
+
+//         const cardMovieRate = document.createElement("p")
+//         cardMovieRate.classList.add("cardsInfo")
+//         cardMovieRate.textContent = `Movie's rate: ${movie.rate
+//         }`
+//         movieCard.appendChild(cardMovieRate);
+
+//         const movieCompany = document.createElement("p")
+//         movieCompany.classList.add("cardsInfo")
+//         movieCompany.textContent = `Movie's company: ${movie.company
+//         }`
+//         movieCard.appendChild(movieCompany);
+
+//     }
+// }
 
 
-const showCards = (filteredMovies) =>{
-    show(filteredMoviesCardsContainer)
+const createCards = (filteredMovies) =>{
+    const moviesCards = []
 
     for(const movie of filteredMovies){
         const movieCard = document.createElement("div");
@@ -480,10 +525,18 @@ const showCards = (filteredMovies) =>{
         }`
         movieCard.appendChild(movieCompany);
 
+        moviesCards.push(movieCard)
     }
+        return moviesCards
 }
 
-
+const showCards = (filteredMovies) =>{
+    show(filteredMoviesCardsContainer)
+    const moviesCards = createCards(filteredMovies) 
+    for(const movieCard of moviesCards){
+    filteredMoviesCardsContainer.appendChild(movieCard);
+    }
+}
 form.addEventListener("submit",(event)=>{
     event.preventDefault()
 
@@ -503,10 +556,10 @@ form.addEventListener("submit",(event)=>{
         fromDate: new Date($("#from-date").value),
         toDate: new Date($("#to-date").value),
         rate: $("#rate").value
-      })
-      showCards(filteredMovies)
+    })
 
-   
+    showCards(filteredMovies)
+
     })
 
     showFormButton.addEventListener("click",()=>{
