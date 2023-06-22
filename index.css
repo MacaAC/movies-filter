@@ -9,10 +9,10 @@ body{
     font-family: 'Raleway', sans-serif;
     font-size: 1.6rem;
     line-height: 2;
+    background-color: #F5F5F5;
 }
 
 header{
-    /* background-color: #F9A826; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +27,6 @@ header{
     display: block;
 }
 nav{
-    /* border: 2px solid black; */
     width: 50%;
     display: flex;
     justify-content: space-around;
@@ -41,7 +40,11 @@ nav a{
     background-color: transparent;
     color: #F9A826;
 }
+
+
+/* FORM */
 .form-section{
+    /* border: 2px solid blue; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,23 +56,23 @@ form {
     align-items: stretch;
     padding: 1rem;
   }
-  
+
   label {
     font-weight: bold;
     margin-bottom: 0.5rem;
   }
-  
+
   input {
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+
   button {
     padding: 0.5rem 1rem;
     background-color: #F9A826;
-    color: white;
+    color: #F5F5F5;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -105,25 +108,26 @@ button:hover {
     background-color: #F9A826;
     padding: 1rem;
 }
-.container{
+.containerOfCards{
   display: flex;
   flex-direction: column;
   align-items:center ;
 }
 .movie-card{
     width: 90%;
+    height: 45rem;
     border-radius: 1rem;
-    padding: 3rem;
+    padding: 2rem;
     background-color:#ccc;
     margin: 1rem 0 1rem 0;
-    
+    font-size: 1.3rem;
 }
 .movie-card-title{
     color: #F9A826;
     text-align: center;
 }
 
-/* footer */
+/* footer*/
 
 footer{
     background-color: #F9A826;
@@ -134,10 +138,10 @@ footer{
 }
 
 .footer-button-box button{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     border-radius: 50%;
-    background-color: white;
-    border:1px solid white;
+    background-color: #F5F5F5;
+    border:1px solid #F5F5F5;
 }
 
 .footer-button-box button i{
@@ -147,10 +151,150 @@ footer{
 .footer-button-box button:hover{
     background-color: #F9A826;
 }
-.footer-button-box button i:hover{
-    color:white;
+.footer-button-box button:hover i{
+    color:#F5F5F5;
 }
 /* Utilities */
 .hidden{
     display: none;
+}
+
+/* Mobile (Portrait - Default) */
+@media (max-width: 575.98px) and (orientation: portrait) {
+
+}
+
+/* Mobile (Landscape) */
+@media (min-width: 576px) and (max-width: 991.98px) and (orientation: landscape) {
+.heroAndTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+.welcome-section-hero{
+    width: 50%;
+}
+.welcome-section-title{
+    width: 40%;
+}
+
+.containerOfCards{
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.movie-card{
+    width: 35%;
+    margin: 1rem;
+}
+
+footer{
+    padding: 2rem;
+}
+
+}
+
+/* Tablet (Portrait) */
+@media (min-width: 576px) and (max-width: 991.98px) and (orientation: portrait) {
+    .heroAndTitle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 1rem;
+    }
+    .welcome-section-hero{
+        width: 50%;
+    }
+    .welcome-section-title{
+        width: 40%;
+    }
+
+    .containerOfCards{
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .movie-card{
+        width: 35%;
+        margin: 1rem;
+    }
+}
+
+/* Tablet (Landscape)*/
+@media (min-width: 992px) and (max-width: 1199.98px) and (orientation: landscape) {
+    nav{
+        width: 30%;
+    }
+    .heroAndTitle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 1rem;
+    }
+    .welcome-section-hero{
+        width: 50%;
+    }
+    .welcome-section-title{
+        width: 40%;
+    }
+    
+    .containerOfCards{
+        width: 100%;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .movie-card{
+        width: 28%;
+        margin: 1rem;
+    }
+
+}
+
+/* Desktop */
+@media (min-width: 1199.98px) {
+    nav{
+        width: 30%;
+    }
+    /* header{
+        /* background-color: aqua; */
+    /* }  */
+    .heroAndTitle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 1rem;
+    }
+    .welcome-section-hero{
+        width: 40%;
+    }
+    .welcome-section-title{
+        width: 40%;
+    }
+    
+    .containerOfCards{
+        width: 100%;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .movie-card{
+        width: 20%;
+        margin: 1rem;
+    }
+    .footer-button-box button{
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+footer{
+    background-color: #F9A826;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+
 }
