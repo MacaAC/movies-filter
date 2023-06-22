@@ -23,17 +23,19 @@
     </header>
     <section>
         <div id="cover" class="welcome-section">
-            <div class="welcome-section-hero">
-                <img src="src/assets/undraw_movie_night_re_9umk.svg" alt="hero">
+            <div class="heroAndTitle">
+                <div class="welcome-section-hero">
+                    <img src="src/assets/undraw_movie_night_re_9umk.svg" alt="hero">
+                </div>
+                <h1 class="welcome-section-title">
+                    Welcome to your Movies-filter site
+                </h1>
             </div>
-            <h1 class="welcome-section-title">
-                Welcome to your Movies-filter site
-            </h1>
             <button id="show-form-button">Let's filter</button>
         </div>
     </section>
     <section class="form-section hidden" id="form-container">
-        <h1>Please enter your data</h1>
+        <h2>Please enter your data</h2>
         <form id="consult-form">
             <label for="user-id">Ingresa tu Id:</label>
             <input id="user-id" type="number">
@@ -48,8 +50,7 @@
     </section>
     <section id="filtered-movies-cards-container" class="filtered-movies-cards-section hidden">
         <button id="filter-again-button">Filter again</button>
-        <div id="cards-container" class="container">
-        </div>
+        <div id="cards-container" class="containerOfCards"></div>
     </section>
     <footer>
         <div class="footer-button-box">
@@ -60,6 +61,8 @@
         <div class="sign">
             <p>Made with ❤️ by Maca </p></div>
     </footer>
-    <script src="scripts/movies-filter.js"></script>
+    <!-- <script src="scripts/movies-filter.js"></script> -->
+    <script src="scripts/prueba.js"></script>
+
 </body>
 </html>
