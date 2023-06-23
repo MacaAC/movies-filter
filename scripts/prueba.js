@@ -383,6 +383,7 @@ const githubButton = $("#github-button")
 const linkedinButton = $("#linkedin-button")
 const modal = $("#modal");
 const closeModalButton = $("#closeModalButton");
+const noResultsMessage = $("#no-results-message");
 
 
 //FILTER FUNCTIONS
@@ -403,7 +404,7 @@ const filterMovies = ({movies,users, userId, rate, fromDate, toDate}) =>{
     const moviesToFilter = [...movies]
     let filteredMovies = filterMoviesByDate(fromDate,toDate,moviesToFilter)
 
-    filteredMovies = filteredMovies.filter(movie=> movie.rate === Number(rate))
+    filteredMovies = filteredMovies.filter(movie=> movie.rate >= Number(rate))
 
     if(userId){
         filteredMovies = filteredMovies.filter(movie=> movie.userId === Number(userId))
@@ -428,13 +429,18 @@ const filterMovies = ({movies,users, userId, rate, fromDate, toDate}) =>{
 const clean = (idHtml) => idHtml.classList.add("hidden");
 const show = (idHtml) => idHtml.classList.remove("hidden");
 
+const cleanCards = () =>{
+    while (cardsContainer.firstChild) {
+        cardsContainer.removeChild(cardsContainer.firstChild);
+    }
+}
+
 const createCards = (filteredMovies) =>{
     const moviesCards = []
 
     for(const movie of filteredMovies){
         const movieCard = document.createElement("div");
         movieCard.classList.add("movie-card");
-        // cardsContainer.appendChild(movieCard);
 
         const cardMovieTitle = document.createElement("h2")
         cardMovieTitle.classList.add("movie-card-title");
@@ -479,13 +485,22 @@ const createCards = (filteredMovies) =>{
     }
         return moviesCards
 }
+const showNoResultsMessage = () => {
+    if (cardsContainer.childElementCount === 0) {
+      show(noResultsMessage);
+    } else {
+      clean(noResultsMessage);
+    }
+  };
 
 const showCards = (filteredMovies) =>{
     show(filteredMoviesCardsContainer)
+    cleanCards()
     const moviesCards = createCards(filteredMovies) 
     for(const movieCard of moviesCards){
     cardsContainer.appendChild(movieCard);
     }
+    showNoResultsMessage();
 }
 
 //EVENT HANDLING FUNCTIONS 
