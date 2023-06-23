@@ -417,6 +417,10 @@ const filterMovies = (movies) =>{
   return filteredMovies
 
 }
+// const filterMoviesTest = ({movies, userId, rate, fromDate, toDate}) =>{
+  
+
+// }
 
 const getMoviesWithUsersDetails = (filteredMovies) => {
   return filteredMovies.map(movie => {
@@ -440,7 +444,7 @@ const showCards = () =>{
   for(const movie of getMoviesWithUsersDetails(filteredMovies)){
     const movieCard = document.createElement("div");
     movieCard.classList.add("movie-card");
-    cardsContainer.appendChild(movieCard);
+    // cardsContainer.appendChild(movieCard);
 
     const cardMovieTitle = document.createElement("h2")
     cardMovieTitle.classList.add("movie-card-title");
