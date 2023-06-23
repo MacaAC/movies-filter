@@ -378,9 +378,11 @@ const showFormButton = $("#show-form-button")
 const filteredMoviesCardsContainer = $("#filtered-movies-cards-container")
 const filterAgainButton = $("#filter-again-button")
 const homeButton = $("#home-button")
-const home =$("#home")
+const homeLink =$("#home")
 const githubButton = $("#github-button")
 const linkedinButton = $("#linkedin-button")
+const modal = $("#modal");
+const closeModalButton = $("#closeModalButton");
 
 
 //FILTER FUNCTIONS
@@ -432,7 +434,7 @@ const createCards = (filteredMovies) =>{
     for(const movie of filteredMovies){
         const movieCard = document.createElement("div");
         movieCard.classList.add("movie-card");
-        cardsContainer.appendChild(movieCard);
+        // cardsContainer.appendChild(movieCard);
 
         const cardMovieTitle = document.createElement("h2")
         cardMovieTitle.classList.add("movie-card-title");
@@ -482,20 +484,21 @@ const showCards = (filteredMovies) =>{
     show(filteredMoviesCardsContainer)
     const moviesCards = createCards(filteredMovies) 
     for(const movieCard of moviesCards){
-    filteredMoviesCardsContainer.appendChild(movieCard);
+    cardsContainer.appendChild(movieCard);
     }
 }
 
 //EVENT HANDLING FUNCTIONS 
 const handleSubmit = (event) => {
-    event.preventDefault()
+event.preventDefault()
 
 const rateValue = rateInput.value
 const fromDateValue = fromDateInput.value
 const toDateValue = toDateInput.value
 if (!rateValue || !toDateValue || !fromDateValue){
-alert("Por favor rellene todos los campos requeridos")
-return
+    event.preventDefault();
+    modal.style.display = 'block';
+    return
 }
 
 clean(formContainer)
@@ -534,6 +537,9 @@ const handleGithubButton = () => {
 const handleLinkedinButton = () => {
     window.location.href = "https://www.linkedin.com/in/maria-macarena-%C3%A1lvarez-castillo-56445a176/";
 }
+const handleCloseModalButton = () =>{
+    modal.style.display = 'none';
+}
 
 
 
@@ -546,3 +552,12 @@ homeButton.addEventListener("click", handleHomeButton)
 homeLink.addEventListener("click", handleHomeLink)
 githubButton.addEventListener("click",handleGithubButton )
 linkedinButton.addEventListener("click", handleLinkedinButton);
+closeModalButton.addEventListener('click', handleCloseModalButton);
+
+
+
+
+
+
+
+
