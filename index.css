@@ -25,7 +25,7 @@ header {
   align-items: center;
 }
 .logo {
-  width: 20%;
+  width: 40%;
 }
 .logo img {
   width: 100%;
@@ -60,6 +60,9 @@ form {
   align-items: stretch;
 }
 
+span{
+    color: red;
+}
 label {
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -185,6 +188,14 @@ button:hover {
   color: #f9a826;
   text-align: center;
 }
+.no-results-message{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    text-align: center;
+  }
 
 /* footer*/
 
@@ -226,6 +237,10 @@ footer {
 
 /* Mobile (Landscape) */
 @media (min-width: 576px) and (max-width: 991.98px) and (orientation: landscape) {
+
+  .logo{
+    width: 25%;
+  }
   .heroAndTitle {
     display: flex;
     align-items: center;
@@ -287,6 +302,9 @@ footer {
   nav {
     width: 30%;
   }
+  .logo{
+    width: 20%;
+  }
   .heroAndTitle {
     display: flex;
     align-items: center;
@@ -315,8 +333,12 @@ footer {
 
 /* Desktop */
 @media (min-width: 1199.98px) {
+   
   nav {
     width: 30%;
+  }
+  .logo{
+    width: 20%;
   }
   header {
     padding: 0;
@@ -339,11 +361,11 @@ footer {
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
   }
   .movie-card {
     width: 20%;
-    margin: 1rem;
+    margin: 2rem;
   }
   .footer-button-box button {
     padding: 2rem;
