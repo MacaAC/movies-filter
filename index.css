@@ -1,0 +1,407 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.6rem;
+  background-color: #dff9fb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem 0 2rem;
+}
+.logo {
+  width: 50%;
+}
+.logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+nav {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+nav a {
+  color: #ff7a7a;
+  text-decoration: none;
+}
+#home {
+  background-color: transparent;
+  color: #ff7a7a;
+  border: none;
+  box-shadow: none;
+}
+
+/* Welcome Section */
+
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.heroAndTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.welcome-section-hero {
+  width: 90%;
+}
+.welcome-section-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.welcome-section-title {
+  text-align: center;
+  width: 80%;
+  color: #badb57;
+}
+button {
+  border-radius: 3rem;
+  padding: 2rem;
+  border: 2px solid #badb57;
+  background-color: transparent;
+  color: #badb57;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px #badb57;
+  transition: box-shadow 0.3s ease;
+}
+button:hover {
+  background-color: #badb57;
+  color: #ff7a7a;
+  transform: scale(1.1);
+}
+
+/* FORM */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+span {
+  color: red;
+}
+label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-close-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ccc;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-close-button:hover {
+  background-color: #aaa;
+  color: white;
+}
+
+/* CARDS */
+.filtered-movies-cards-section {
+  padding: 2rem;
+}
+.containerOfCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-card {
+  width: 90%;
+  height: 45rem;
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: #f6e48e;
+  margin: 1rem 0 1rem 0;
+  font-size: 1.3rem;
+}
+
+.movie-card-title {
+  color: #ff7a7a;
+  text-align: center;
+}
+.no-results-message {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #ff7a7a;
+  width: 60%;
+  text-align: center;
+  box-shadow: 0 2px 4px #ff7a7a;
+  color: #ff7a7a;
+}
+
+/* FOOTER */
+footer {
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer button {
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+/* Mobile (Portrait) */
+@media (max-width: 575.98px) and (orientation: portrait) {
+  .welcome-section {
+    height: 65vh;
+  }
+  .form-section {
+    height: 65vh;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Mobile (Landscape) */
+
+@media (min-width: 576px) and (max-width: 991.98px) and (orientation: landscape) {
+  .welcome-section {
+    height: 60vh;
+  }
+  .form-section {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo {
+    width: 30%;
+  }
+  nav {
+    width: 30%;
+  }
+  .heroAndTitle {
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  button {
+    padding: 1rem;
+  }
+  .containerOfCards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .movie-card {
+    width: 35%;
+    margin: 1rem;
+    height: 32rem;
+  }
+  footer {
+    height: 8rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Tablet (Portrait) */
+@media (min-width: 576px) and (max-width: 991.98px) and (orientation: portrait) {
+  .welcome-section {
+    height: 40vh;
+  }
+  .form-section {
+    height: 40vh;
+    align-items: center;
+    justify-content: center;
+  }
+  header {
+    padding: 2rem;
+  }
+  .logo {
+    width: 30%;
+  }
+  .heroAndTitle {
+    width: 70%;
+  }
+  button {
+    padding: 1.5rem;
+  }
+  footer button {
+    padding: 1.5rem;
+  }
+  .containerOfCards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .movie-card {
+    width: 35%;
+    margin: 1rem;
+  }
+}
+
+/* Tablet (Landscape)*/
+@media (min-width: 992px) and (max-width: 1199.98px) and (orientation: landscape) {
+  body {
+    font-size: 2rem;
+  }
+  .welcome-section {
+    height: 50vh;
+  }
+  .form-section {
+    height: 60vh;
+    align-items: center;
+    justify-content: center;
+  }
+  header {
+    padding: 2rem;
+    width: 100%;
+  }
+  .logo {
+    width: 25%;
+  }
+  nav {
+    width: 40%;
+  }
+  .welcome-section {
+    justify-content: space-around;
+    width: 100%;
+    padding: 4rem;
+  }
+  .heroAndTitle {
+    flex-direction: row;
+  }
+
+  .containerOfCards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .movie-card {
+    width: 30%;
+    height: 32rem;
+    margin: 1rem;
+  }
+  footer {
+    width: 100%;
+  }
+  footer button {
+    padding: 2rem;
+    margin: 0 1rem;
+  }
+  button {
+    padding: 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1199.98px) {
+  body {
+    display: grid;
+    grid-template-rows: 15% 65% 20%;
+  }
+  .heroAndTitle {
+    padding: 3rem;
+    flex-direction: row;
+    width: 90%;
+  }
+  .welcome-section-title {
+    font-size: 5rem;
+  }
+
+  .logo {
+    width: 20%;
+  }
+
+  .containerOfCards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .movie-card {
+    width: 25%;
+    height: 32rem;
+    margin: 1rem;
+  }
+
+  footer button {
+    padding: 1.5rem;
+  }
+}
+
+/* Utilities */
+.hidden {
+  display: none;
+}
