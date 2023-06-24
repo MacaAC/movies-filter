@@ -183,12 +183,10 @@ showCards(filteredMovies)
 const handleShowFormButton = () => {
     clean(welcomeSection)
     show(formContainer)
-    // form.reset()
 }
 const handleFilterAgainButton = () => {
     clean(filteredMoviesCardsContainer)
     show(formContainer)
-    // form.reset()
 }
 const handleHomeButton = () => {
     clean(formContainer)
