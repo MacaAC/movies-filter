@@ -30,6 +30,7 @@ const linkedinButton = $("#linkedin-button")
 const modal = $("#modal");
 const closeModalButton = $("#closeModalButton");
 const noResultsMessage = $("#no-results-message");
+const footer = $("footer")
 
 
 //Filtering functions
@@ -176,7 +177,7 @@ const filteredMovies = filterMovies({
     toDate: new Date($("#to-date").value),
     rate: $("#rate").value
 })
-
+// clean(footer)
 showCards(filteredMovies)
 }
 const handleShowFormButton = () => {
@@ -207,7 +208,7 @@ const handleCloseModalButton = () =>{
     modal.style.display = 'none';
 }
 
-
+console.log("Hola", homeLink)
 
 //Assign the event handlers
 

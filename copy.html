@@ -12,26 +12,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="index.css">
 </head>
-    <body>
+<body>
     <header>
         <div class="logo">
-            <img src="src/assets/movies-logo-sh.png">
+            <img src="src/assets/logofondo.png">
         </div>
         <nav>
             <button id="home">Home</button>
             <a href="https://www.linkedin.com/in/maria-macarena-%C3%A1lvarez-castillo-56445a176/">Contact us</a>
         </nav>
     </header>
-    <section id="cover" class="welcome-section">
-        <div class="heroAndTitle">
-            <div class="welcome-section-hero">
-                <img src="src/assets/green-hero.svg" alt="hero">
+    <section>
+        <div id="cover" class="welcome-section">
+            <div class="heroAndTitle">
+                <div class="welcome-section-hero">
+                    <img src="src/assets/undraw_movie_night_re_9umk.svg" alt="hero">
+                </div>
+                <h1 class="welcome-section-title">
+                    Welcome to your Movies-filter site
+                </h1>
             </div>
-            <h1 class="welcome-section-title">
-                Welcome to your Movies-filter site
-            </h1>
+            <button id="show-form-button">Let's filter</button>
         </div>
-        <button id="show-form-button">Let's filter</button>
     </section>
     <section class="form-section hidden" id="form-container">
         <h2>Please enter your data</h2>
@@ -43,7 +45,7 @@
             <input  id="from-date" type="date">
             <label for="to-date">Ingresa hasta cuando:<span>*</span></label>
             <input  id="to-date" type="date">
-            <label for="rate">Filter by minimum rating:<span>*</span></label>
+            <label for="rate">Filter by minimum rating::<span>*</span></label>
             <input id="rate" type="text">
             <button type="submit">Consult</button>
         </form>
@@ -61,14 +63,13 @@
         <div id="no-results-message" class="no-results-message hidden">No matching records found for the entered data in our database.</div>
     </section>
     <footer>
-        <div class="button-box">
+        <div class="footer-button-box">
             <button id="github-button"><i class="fab fa-github-alt"></i></button>
             <button id="linkedin-button"><i class="fab fa-linkedin"></i></button>
             <button id="home-button"><i class="fas fa-home"></i></i></button>
         </div>
         <p>Made with ❤️ by Maca </p>
     </footer>
-
     <!-- <script src="scripts/movies-filter.js"></script> -->
     <script src="scripts/users-data.js"></script>
     <script src="scripts/movies-data.js"></script>
