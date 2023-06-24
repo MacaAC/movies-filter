@@ -167,7 +167,6 @@ if (!rateValue || !toDateValue || !fromDateValue){
     modal.style.display = 'block';
     return
 }
-
 clean(formContainer)
 const filteredMovies = filterMovies({
     movies: MOVIES,
@@ -177,16 +176,19 @@ const filteredMovies = filterMovies({
     toDate: new Date($("#to-date").value),
     rate: $("#rate").value
 })
-// clean(footer)
+form.reset()
+
 showCards(filteredMovies)
 }
 const handleShowFormButton = () => {
     clean(welcomeSection)
     show(formContainer)
+    // form.reset()
 }
 const handleFilterAgainButton = () => {
     clean(filteredMoviesCardsContainer)
     show(formContainer)
+    // form.reset()
 }
 const handleHomeButton = () => {
     clean(formContainer)
