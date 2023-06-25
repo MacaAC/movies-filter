@@ -154,31 +154,45 @@ const showCards = (filteredMovies) =>{
     }
     showNoResultsMessage();
 }
+// Function to show a modal with a message
+const showModal = (message) =>{
+    const modalMessage = $("#modalMessage");
+    modalMessage.textContent = message;
+    modal.style.display = "block";
+}
+
 
 // Event handling functions
 const handleSubmit = (event) => {
-event.preventDefault()
+    event.preventDefault()
+    const userIdValue = userIdInput.value;
+    const rateValue = rateInput.value
+    const fromDateValue = fromDateInput.value
+    const toDateValue = toDateInput.value
+    if (!rateValue || !toDateValue || !fromDateValue){
+        showModal("Please fill in all required fields.")
+        return
+    }
+    if(isNaN(userIdValue)){
+        showModal("The entered user is not valid. Please enter a number")
+        return
+    }
+    if(isNaN(rateValue)){
+        showModal("The entered rate is not valid. Please enter a number")
+        return
+    }
+    clean(formContainer)
+    const filteredMovies = filterMovies({
+        movies: MOVIES,
+        users: USERS,
+        userId: userIdValue,
+        fromDate: new Date($("#from-date").value),
+        toDate: new Date($("#to-date").value),
+        rate: rateValue
+    })
+    form.reset()
 
-const rateValue = rateInput.value
-const fromDateValue = fromDateInput.value
-const toDateValue = toDateInput.value
-if (!rateValue || !toDateValue || !fromDateValue){
-    event.preventDefault();
-    modal.style.display = 'block';
-    return
-}
-clean(formContainer)
-const filteredMovies = filterMovies({
-    movies: MOVIES,
-    users: USERS,
-    userId: $("#user-id").value,
-    fromDate: new Date($("#from-date").value),
-    toDate: new Date($("#to-date").value),
-    rate: $("#rate").value
-})
-form.reset()
-
-showCards(filteredMovies)
+    showCards(filteredMovies)
 }
 const handleShowFormButton = () => {
     clean(welcomeSection)
@@ -208,7 +222,6 @@ const handleCloseModalButton = () =>{
     modal.style.display = 'none';
 }
 
-console.log("Hola", homeLink)
 
 //Assign the event handlers
 
